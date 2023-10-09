@@ -1,5 +1,5 @@
 
-FROM node:alpine
+FROM node:18.17.1-alpine
 # Set the working directory within the container
 WORKDIR /website
 
