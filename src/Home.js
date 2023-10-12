@@ -9,7 +9,7 @@ const Home = () => {
    
       const fetchData = async () => {
         try {
-          const response = await axios.get("http://localhost:8000");
+          const response = await axios.get("http://13.233.33.93:8000");
           setUserDetails(response.data);
           setDataFetched(true);
           console.log("setUserDetails");
