@@ -21,7 +21,7 @@ RUN npm run build
 
 FROM nginx:1.25.2-alpine
 
-WORKDIR /user/share/nginx/html
+WORKDIR /usr/share/nginx/html
 
 RUN rm  -rf ./*
 
