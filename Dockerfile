@@ -1,5 +1,5 @@
 
-FROM node:18.17.1-alpine
+FROM node:18.17.1-alpine as nodework
 # Set the working directory within the container
 WORKDIR /website
 
@@ -15,11 +15,16 @@ RUN npm install
 COPY . .
 
 # Build the React app
-EXPOSE 3000
+# EXPOSE 3000
+RUN npm run build 
 
 
 FROM nginx:1.25.2-alpine
 
 WORKDIR /user/share/nginx/html
 
-ENTRYPOINT [ "nginx" ,"g","daemon off;"]
+RUN rm  -rf ./*
+
+COPY --from=nodework /website/build .
+
+ENTRYPOINT [ "nginx" ,"-g","daemon off;"]
